@@ -2,6 +2,8 @@
 
 # 52Hertz Lite
 
+[![CI](https://github.com/pournasseh/52hertz-lite/actions/workflows/ci.yml/badge.svg)](https://github.com/pournasseh/52hertz-lite/actions/workflows/ci.yml)
+
 A fully static radio player. No PHP, no database, no playout server. Put the
 folder on any free static host, edit `station.json`, and listeners join a
 station that is already playing.
