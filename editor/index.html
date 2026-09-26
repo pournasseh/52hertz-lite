@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>52hertz-lite editor</title>
+<meta name="theme-color" content="#0d1013">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' http: https: data:; media-src 'self' http: https:; connect-src 'self'; form-action 'self'">
+<link rel="stylesheet" href="../css/editor.css">
+<link rel="icon" href="../assets/favicon.ico" type="image/vnd.microsoft.icon">
+</head>
+<body>
+<header class="top">
+  <button type="button" class="icon-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14" /></svg>
+  </button>
+  <div class="top-text">
+    <h1 id="page-title">Playlist editor</h1>
+  </div>
+  <div class="top-actions">
+    <div class="save-menu" id="save-menu-wrap">
+      <button type="button" class="icon-btn" id="save-menu-btn" aria-expanded="false" aria-haspopup="menu" aria-label="Save">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 4h11l3 3v13H6z"/>
+          <path d="M8 4v5h8V4"/>
+          <path d="M8 20v-7h8v7"/>
+        </svg>
+      </button>
+      <div class="save-dropdown" id="save-dropdown" hidden role="menu">
+        <button type="button" class="save-item" id="draft-save" role="menuitem" disabled>
+          <span id="lbl-draft-save">Save draft</span>
+        </button>
+        <button type="button" class="save-item" id="draft-save-as" role="menuitem">
+          <span id="lbl-draft-save-as">Save as new draft</span>
+        </button>
+      </div>
+    </div>
+    <button type="button" class="icon-btn" id="station-settings-btn" aria-label="Station settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<nav class="drawer" id="menu" hidden>
+  <div class="drawer-backdrop" id="menu-backdrop"></div>
+  <aside class="drawer-panel" role="dialog" aria-labelledby="drawer-brand-title">
+    <div class="drawer-brand">
+      <img class="drawer-mark" src="../assets/mark.png" alt="" width="48" height="48">
+      <div class="drawer-brand-text">
+        <p class="drawer-product" id="drawer-brand-title">52hertz-lite</p>
+        <p class="drawer-tag" id="drawer-brand-tag">Playlist editor</p>
+      </div>
+    </div>
+    <div class="drawer-nav">
+      <button type="button" class="menu-row" id="menu-station">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span id="lbl-menu-station">Station settings</span>
+      </button>
+      <button type="button" class="menu-row" id="menu-health">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 12l2 2 4-4"/>
+          <circle cx="12" cy="12" r="9"/>
+        </svg>
+        <span id="lbl-menu-health">Health check</span>
+      </button>
+      <button type="button" class="menu-row" id="menu-drafts">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 4h7l4 4v12H7z"/>
+          <path d="M14 4v4h4"/>
+        </svg>
+        <span id="lbl-menu-drafts">Drafts</span>
+      </button>
+      <button type="button" class="menu-row" id="menu-on-air">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M5 12a7 7 0 0 1 14 0"/>
+          <path d="M2 12a10 10 0 0 1 20 0"/>
+        </svg>
+        <span id="lbl-menu-on-air">Load on-air</span>
+      </button>
+      <button type="button" class="menu-row" id="menu-publish-help">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 10.5V17"/>
+          <circle cx="12" cy="7.5" r="1"/>
+        </svg>
+        <span id="lbl-menu-publish-help">How to publish</span>
+      </button>
+      <label class="menu-row file">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10m0 0l-4-4m4 4l4-4"/><path d="M5 19h14"/></svg>
+        <span id="lbl-load">Load JSON</span>
+        <input type="file" id="load" accept="application/json,.json" hidden>
+      </label>
+      <button type="button" class="menu-row" id="menu-download">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10m0 0l-4-4m4 4l4-4M5 19h14"/></svg>
+        <span id="lbl-menu-download">Download JSON</span>
+      </button>
+      <button type="button" class="menu-row" id="menu-view-json">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h10"/></svg>
+        <span id="lbl-view-json">View JSON</span>
+      </button>
+      <a class="menu-row" id="open-player" href="../index.html" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+        <span id="open-player-label">Open player</span>
+      </a>
+    </div>
+    <div class="drawer-foot">
+      <label class="drawer-lang">
+        <span id="lbl-ui-language">Language</span>
+        <select id="ui-language"></select>
+      </label>
+    </div>
+  </aside>
+</nav>
+
+<main class="wrap">
+  <section class="card pulse-card" id="pulse-card" aria-live="polite">
+    <div class="pulse-head">
+      <p class="pulse-kicker" id="pulse-kicker">Station</p>
+      <p class="pulse-onair" id="pulse-onair" hidden>
+        <span class="pulse-onair-dot" aria-hidden="true"></span>
+        <span id="pulse-onair-text">on air</span>
+      </p>
+    </div>
+    <p class="pulse-line" id="pulse-line" dir="auto">—</p>
+    <div class="pulse-stats">
+      <div class="pulse-stat">
+        <span class="pulse-value" id="stat-tracks">0</span>
+        <span class="pulse-label" id="lbl-stat-tracks">Tracks</span>
+      </div>
+      <div class="pulse-stat">
+        <span class="pulse-value" id="stat-duration">—</span>
+        <span class="pulse-label" id="lbl-stat-duration">One pass</span>
+      </div>
+      <div class="pulse-stat">
+        <span class="pulse-value" id="stat-avg">—</span>
+        <span class="pulse-label" id="lbl-stat-avg">Average</span>
+      </div>
+    </div>
+    <div class="pulse-now" id="pulse-now" hidden>
+      <p class="pulse-now-kicker" id="pulse-now-kicker">Now playing</p>
+      <p class="pulse-now-title" id="pulse-now-title" dir="auto"></p>
+      <p class="pulse-now-meta" id="pulse-now-meta"></p>
+    </div>
+  </section>
+
+  <section class="card tracks-card">
+    <div class="sec-head">
+      <h2 id="h-tracks">Tracks</h2>
+    </div>
+    <div class="recovery-bar" id="recovery-bar" hidden>
+      <p id="recovery-note"></p>
+      <div class="recovery-actions">
+        <button type="button" class="btn small" id="recovery-discard"></button>
+        <button type="button" class="btn small primary" id="recovery-restore"></button>
+      </div>
+    </div>
+    <div class="health-apply-bar" id="health-apply-bar" hidden>
+      <p id="health-apply-note"></p>
+      <button type="button" class="btn small primary" id="health-fix"></button>
+    </div>
+    <div id="tracks" class="list"></div>
+  </section>
+</main>
+
+<nav class="bottom-bar" aria-label="Primary actions">
+  <button type="button" class="bar-btn" id="add-track">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+    <span id="add-track-label">Add track</span>
+  </button>
+  <button type="button" class="bar-btn primary" id="download">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10m0 0l-4-4m4 4l4-4M5 19h14" /></svg>
+    <span id="download-label">Download JSON</span>
+  </button>
+</nav>
+
+<!-- Station settings -->
+<dialog class="modal modal-tall" id="modal-station">
+  <form method="dialog" class="modal-card modal-sheet" id="form-station">
+    <header class="modal-head">
+      <h2 id="modal-station-title">Station settings</h2>
+    </header>
+    <div class="modal-body">
+      <div class="grid">
+        <label class="full"><span data-i18n="Name">Name</span><input id="f-name" autocomplete="off"></label>
+        <label class="full"><span data-i18n="Tagline">Tagline</span><input id="f-tagline" autocomplete="off"></label>
+        <label><span data-i18n="Accent">Accent</span><input id="f-accent" type="color" value="#6a7f8c"></label>
+        <label><span data-i18n="Language">Language</span>
+          <select id="f-language"></select>
+        </label>
+        <label class="full"><span data-i18n="Play mode">Play mode</span>
+          <select id="f-mode">
+            <option value="shuffle" data-i18n-option="Shuffle">Shuffle</option>
+            <option value="order" data-i18n-option="Order">Order</option>
+          </select>
+        </label>
+        <label class="full"><span data-i18n="Logo URL">Logo URL</span><input id="f-logoUrl" autocomplete="off" inputmode="url"></label>
+        <label class="full"><span data-i18n="Station cover URL">Station cover URL</span><input id="f-artUrl" autocomplete="off" inputmode="url"></label>
+        <label class="full"><span data-i18n="Home URL">Home URL</span><input id="f-homeUrl" autocomplete="off" inputmode="url"></label>
+        <label class="full"><span data-i18n="Colophon">Colophon</span><input id="f-colophon" autocomplete="off"></label>
+        <div class="day-pair full">
+          <label><span data-i18n="Day start">Day start</span>
+            <input id="f-dayStart" type="time" autocomplete="off">
+          </label>
+          <label><span data-i18n="Timezone">Timezone</span>
+            <input id="f-timezone" list="tz-list" autocomplete="off" placeholder="Asia/Tehran">
+            <datalist id="tz-list">
+              <option value="Asia/Tehran"></option>
+              <option value="UTC"></option>
+              <option value="Europe/London"></option>
+              <option value="Europe/Berlin"></option>
+              <option value="America/New_York"></option>
+              <option value="America/Los_Angeles"></option>
+              <option value="Asia/Dubai"></option>
+              <option value="Asia/Tokyo"></option>
+            </datalist>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-actions modal-foot">
+      <button type="button" class="btn" id="station-cancel"></button>
+      <button type="submit" class="btn primary" id="station-save"></button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Step 1: URL -->
+<dialog class="modal" id="modal-url">
+  <form method="dialog" class="modal-card" id="form-url">
+    <h2 id="modal-url-title">Add track</h2>
+    <p class="modal-lead" id="modal-url-lead"></p>
+    <label>
+      <span data-i18n="Audio URL">Audio URL</span>
+      <input id="m-url" inputmode="url" autocomplete="off" required placeholder="https://">
+    </label>
+    <p class="modal-error" id="modal-url-error" hidden></p>
+    <div class="modal-actions">
+      <button type="button" class="btn" id="url-cancel" value="cancel"></button>
+      <button type="submit" class="btn primary" id="url-next"></button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Step 2: details -->
+<dialog class="modal modal-tall" id="modal-meta">
+  <form method="dialog" class="modal-card modal-sheet" id="form-meta">
+    <header class="modal-head">
+      <h2 id="modal-meta-title">Track details</h2>
+    </header>
+    <div class="modal-body">
+      <p class="modal-note" id="modal-meta-note" hidden></p>
+      <div class="grid">
+        <label class="full" id="meta-url-field" hidden>
+          <span data-i18n="Audio URL">Audio URL</span>
+          <input id="m-meta-url" inputmode="url" autocomplete="off" placeholder="https://">
+        </label>
+        <label class="full">
+          <span data-i18n="Cover URL">Cover URL</span>
+          <input id="m-artUrl" inputmode="url" autocomplete="off">
+        </label>
+        <label class="full">
+          <span data-i18n="Link">Link</span>
+          <input id="m-link" inputmode="url" autocomplete="off" placeholder="https://">
+        </label>
+        <label><span data-i18n="Title">Title</span><input id="m-title" autocomplete="off"></label>
+        <label><span data-i18n="Credit">Credit</span><input id="m-credit" autocomplete="off"></label>
+        <label class="full">
+          <span data-i18n="Duration (seconds)">Duration (seconds)</span>
+          <input id="m-duration" inputmode="decimal" autocomplete="off" required>
+          <p class="field-hint modal-warn" id="modal-meta-warn"></p>
+        </label>
+        <label class="full"><span data-i18n="Description">Description</span><textarea id="m-description"></textarea></label>
+        <div class="meta-player full" id="meta-player-wrap" hidden>
+          <audio id="meta-player" controls preload="metadata" controlsList="nodownload"></audio>
+        </div>
+      </div>
+    </div>
+    <div class="modal-actions modal-foot">
+      <button type="button" class="btn" id="meta-back"></button>
+      <button type="submit" class="btn primary" id="meta-add"></button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Health check -->
+<dialog class="modal" id="modal-health">
+  <div class="modal-card modal-sheet">
+    <header class="modal-head">
+      <h2 id="modal-health-title">Health check</h2>
+    </header>
+    <div class="modal-body">
+      <p class="modal-lead" id="health-lead"></p>
+      <p class="modal-note" id="health-progress"></p>
+    </div>
+    <div class="modal-actions modal-foot">
+      <button type="button" class="btn" id="health-close"></button>
+      <button type="button" class="btn primary" id="health-run"></button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Single track health issue -->
+<dialog class="modal" id="modal-health-issue">
+  <div class="modal-card modal-sheet">
+    <header class="modal-head">
+      <h2 id="modal-health-issue-heading">Track issue</h2>
+    </header>
+    <div class="modal-body">
+      <p class="health-issue-track" id="health-issue-title" dir="auto"></p>
+      <ul class="health-issue-list" id="health-issue-list"></ul>
+    </div>
+    <div class="modal-actions modal-foot">
+      <button type="button" class="btn" id="health-issue-close"></button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Drafts -->
+<dialog class="modal modal-tall" id="modal-drafts">
+  <div class="modal-card modal-sheet">
+    <header class="modal-head">
+      <h2 id="modal-drafts-title">Drafts</h2>
+    </header>
+    <div class="modal-body">
+      <p class="modal-lead" id="drafts-lead"></p>
+      <div class="drafts-list" id="drafts-list"></div>
+    </div>
+    <div class="modal-actions modal-foot">
+      <button type="button" class="btn" id="drafts-close"></button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="modal" id="modal-draft-name">
+  <form class="modal-card modal-sheet" id="form-draft-name">
+    <header class="modal-head">
+      <h2 id="modal-draft-name-title">Save as new draft</h2>
+    </header>
+    <div class="modal-body">
+      <p class="modal-lead" id="draft-name-lead"></p>
+      <label class="full">
+        <span data-i18n="Name">Name</span>
+        <input id="draft-name-input" autocomplete="off" required>
+      </label>
+    </div>
+    <div class="modal-actions modal-foot">
+      <button type="button" class="btn" id="draft-name-cancel"></button>
+      <button type="submit" class="btn primary" id="draft-name-save"></button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="modal-confirm">
+  <div class="modal-card modal-sheet">
+    <header class="modal-head">
+      <h2 id="confirm-title">Confirm</h2>
+    </header>
+    <div class="modal-body">
+      <p class="modal-lead" id="confirm-message"></p>
+    </div>
+    <div class="modal-actions modal-foot">
+      <button type="button" class="btn" id="confirm-cancel"></button>
+      <button type="button" class="btn primary" id="confirm-ok"></button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="modal" id="modal-publish">
+  <div class="modal-card modal-sheet">
+    <header class="modal-head">
+      <h2 id="modal-publish-title">station.json downloaded</h2>
+    </header>
+    <div class="modal-body">
+      <p class="modal-lead" id="modal-publish-lead"></p>
+      <ol class="publish-steps">
+        <li id="publish-step-1"></li>
+        <li id="publish-step-2"></li>
+        <li id="publish-step-3"></li>
+      </ol>
+      <label class="publish-dont-show">
+        <input type="checkbox" id="publish-dont-show">
+        <span id="lbl-publish-dont-show">Don't show this again in this browser</span>
+      </label>
+    </div>
+    <div class="modal-actions modal-foot">
+      <button type="button" class="btn primary" id="publish-close"></button>
+    </div>
+  </div>
+</dialog>
+
+<!-- View / copy JSON -->
+<dialog class="modal" id="modal-json">
+  <div class="modal-card json-card">
+    <div class="json-head">
+      <h2 id="modal-json-title">station.json</h2>
+      <button type="button" class="btn small primary" id="json-copy"></button>
+    </div>
+    <pre class="json-view" id="json-view" tabindex="0"></pre>
+    <div class="modal-actions">
+      <button type="button" class="btn" id="json-close"></button>
+    </div>
+  </div>
+</dialog>
+
+<p class="toast" id="toast" hidden></p>
+<script type="module" src="../js/editor.js"></script>
+</body>
+</html>

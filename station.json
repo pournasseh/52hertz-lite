@@ -1,0 +1,73 @@
+{
+  "id": "rock",
+  "name": "FA-NOOSE RADIO ROCK",
+  "tagline": "Classical Persian poetry set to gothic and doom metal",
+  "accent": "#DE4E4E",
+  "language": "en",
+  "logoUrl": "https://fn-rock.netlify.app/fn-rock.png",
+  "artUrl": "https://fa-noose.netlify.app/img/covers/first-stone/abadi-e-meykhane.jpg",
+  "homeUrl": "https://fa-noose.netlify.app/",
+  "colophon": "fa-noose · demo for 52hertz-lite",
+  "mode": "order",
+  "dayStart": "06:00",
+  "timezone": "Asia/Tehran",
+  "epoch": 1767225600,
+  "tracks": [
+    {
+      "url": "https://archive.org/download/02-fa-noose-dard-e-eshgh/02%20-%20Fa-Noose%20-%20Dard-e-Eshgh.mp3",
+      "duration": 161.14,
+      "title": "Dard-e-Eshgh",
+      "credit": "Hafez",
+      "artUrl": "https://fa-noose.netlify.app/img/covers/first-stone/dard-e-eshgh.jpg",
+      "description": "درد عشقی کشیده‌ام که مپرس\nزهر هجری چشیده‌ام که مپرس\n\nگشته‌ام در جهان و آخر کار\nدلبری برگزیده‌ام که مپرس\nآن چنان در هوای خاک درش\nمی‌رود آب دیده‌ام که مپرس\n\nهمچو حافظ غریب در ره عشق\nبه مقامی رسیده‌ام که مپرس\nمن به گوش خود از دهانش دوش\nسخنانی شنیده‌ام که مپرس"
+    },
+    {
+      "url": "https://archive.org/download/11-fa-noose-del-o-delbar/11%20-%20Fa-Noose%20-%20Del%20o%20Delbar.mp3",
+      "duration": 183.43,
+      "title": "Del o Delbar",
+      "credit": "Baba Taher",
+      "artUrl": "https://fa-noose.netlify.app/img/covers/first-stone/del-o-delbar.jpg",
+      "description": "غم عشقت بیابان پرورم کرد\nفراقت مرغ بی‌بال و پرم کرد\nبه من گفتی صبوری کن صبوری\nصبوری عجب خاکی بر سرم کرد\n\nدلم دور است و احوالش ندونم\nکسی خواهد که پیغامش رسونم\nخداوندا ز مرگم مهلتی ده\nکه دیداری به دیدارش رسونم\n\nاگر دل دلبر و دلبر کدام است؟\nوگر دلبر دل و دل را چه نام است؟\nدل و دلبر به هم آمیخته بینم\nندونم دل که و دلبر کدام است"
+    },
+    {
+      "url": "https://archive.org/download/18-fa-noose-do-mar/18%20-%20Fa-Noose%20-%20Do%20Mar.mp3",
+      "duration": 153.62,
+      "title": "Do Mar",
+      "credit": "Malek o-Shoara Bahar",
+      "artUrl": "https://fa-noose.netlify.app/img/covers/first-stone/do-mar.jpg",
+      "description": "گویی علامت بشر اندر جهان غم است\nآن کس که غم نداشت نه فرزند آدم است\n\nبر گردن حیات بپیچیده عقل و عشق\nاین هر دو مار با همه کس یار و همدم است\n\nعقل ماریست یک دم و چندین هزار سر\nعشق ماریست یک سر و چندین هزار دم"
+    },
+    {
+      "url": "https://archive.org/download/fa-noose-aloodeh/Fa-Noose%20-%20Aloodeh.mp3",
+      "duration": 184.32,
+      "title": "Aloodeh",
+      "credit": "Hafez",
+      "artUrl": "https://fa-noose.netlify.app/img/covers/second-stone/aloodeh.jpg",
+      "description": "دوش رفتم به در میکده خواب آلوده\nخرقه تر دامن و سجاده شراب آلوده\n\nآمد افسوس کنان مغبچهٔ باده فروش\nگفت بیدار شو ای ره‌رو خواب آلوده\n\nدوش رفتم به در میکده خواب آلوده\nخرقه تر دامن و سجاده شراب آلوده"
+    },
+    {
+      "url": "https://archive.org/download/fa-noose-bot-e-man/Fa-Noose%20-%20Bot%20e%20Man.mp3",
+      "duration": 172.92,
+      "title": "Bot e Man",
+      "credit": "Baba Taher",
+      "artUrl": "https://fa-noose.netlify.app/img/covers/second-stone/bot-e-man.jpg",
+      "description": "به سر غیر تو سودایی ندارم\nبه دل جز تو تمنایی ندارم\n\nخدا داند که در این بازار عشقت\nبه جز جان هیچ کالایی ندارم\n\nبت من کعبهٔ من قبلهٔ من\nتو ای هر سو نظر سوی تو دارم\nبت من کعبهٔ من قبلهٔ من\nتو ای هر سو نظر سوی تو دارم"
+    },
+    {
+      "url": "https://archive.org/download/fa-noose-che-kasam/Fa-Noose%20-%20Che%20Kasam.mp3",
+      "duration": 249,
+      "title": "Che Kasam",
+      "credit": "Rumi",
+      "artUrl": "https://fa-noose.netlify.app/img/covers/second-stone/che-kasam.jpg",
+      "description": "نفسی آتش سوزان نفسی سیل گریزان\nز چه اصلم ز چه فصلم به چه بازار خرندم\n\nنفسی همره ماهم نفسی مست الهم\nنفسی یوسف چاهم نفسی جمله گزندم\n\nگه از آن سوی کشندم گه از این سوی کشندم\nچه کسم من چه کسم من که بسی وسوسه‌مندم"
+    },
+    {
+      "url": "https://archive.org/download/fa-noose-kharabati-kharab/Fa-Noose%20-%20Kharabati%20Kharab.mp3",
+      "duration": 262.82,
+      "title": "Kharabati Kharab",
+      "credit": "Attar",
+      "artUrl": "https://fa-noose.netlify.app/img/covers/second-stone/kharabati-kharab.jpg",
+      "description": "تو را در ره خراباتی خراب است\nگر آنجا خانه‌ای گیری صواب است\n\nبگیر آن خانه تا ظاهر ببینی\nکه خلق عالم و عالم سراب است\n\nخراباتیست بیرون کز آن\nفلک را روز و شب چندین شتاب است"
+    }
+  ]
+}

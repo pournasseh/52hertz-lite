@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<title>52hertz-lite</title>
+<meta name="description" content="A station that is already playing — static.">
+<meta name="theme-color" content="#0d1013">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' http: https: data:; media-src 'self' http: https:; connect-src 'self'; form-action 'self'">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" id="favicon" href="">
+<link rel="stylesheet" href="css/player.css">
+</head>
+<body data-state="loading">
+
+<!-- Static twin of the 52hertz player shell. Words, colour and pictures come
+     from station.json + languages/, not from a PHP feed. -->
+<div class="app" id="app">
+
+  <section class="stage">
+    <div class="stage-art" id="stage-art" aria-hidden="true"></div>
+
+    <header class="masthead">
+      <div class="ident">
+        <h1 class="station-name" id="station-name" dir="auto">&nbsp;</h1>
+        <p class="station-tagline" id="station-tagline" dir="auto"></p>
+      </div>
+      <div class="mast-actions">
+        <p class="onair"><span class="onair-dot" aria-hidden="true"></span><span id="onair-text"></span></p>
+      </div>
+    </header>
+
+    <div class="now" aria-live="polite">
+      <div class="sleeve" id="sleeve">
+        <span class="sleeve-letter" id="sleeve-letter" aria-hidden="true"></span>
+        <img id="sleeve-img" alt="" hidden>
+      </div>
+      <div class="now-text">
+        <p class="eyebrow" id="eyebrow"></p>
+        <h2 class="title" id="title" dir="auto">&nbsp;</h2>
+        <p class="credit" id="credit" dir="auto"></p>
+        <p class="length" id="length"></p>
+      </div>
+    </div>
+
+    <div class="queue" id="queue">
+      <h3 class="pane-title" id="queue-title"></h3>
+      <ol class="later" id="later"></ol>
+    </div>
+  </section>
+
+  <section class="deck">
+    <div class="controls">
+      <button type="button" class="ghost" id="more" aria-expanded="false" aria-controls="about">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6.5h14M5 11h14M5 15.5h9" /></svg>
+      </button>
+      <button type="button" class="play" id="play" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path id="play-glyph" d="M8 5l12 7-12 7z" /></svg>
+      </button>
+      <button type="button" class="ghost" id="share">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="17.5" cy="5.5" r="2.6" /><circle cx="6.5" cy="12" r="2.6" /><circle cx="17.5" cy="18.5" r="2.6" />
+          <path d="M8.8 10.7l6.4-3.9M8.8 13.3l6.4 3.9" />
+        </svg>
+      </button>
+    </div>
+    <p class="notice" id="notice"></p>
+
+    <footer class="foot" id="foot" hidden>
+      <span class="colophon" id="colophon" dir="auto"></span>
+      <a class="home" id="home-link" hidden></a>
+    </footer>
+
+    <div class="about" id="about" role="dialog" aria-modal="true" aria-labelledby="about-title" inert>
+      <div class="about-backdrop" id="about-backdrop" aria-hidden="true"></div>
+      <div class="about-head">
+        <h3 class="pane-title" id="about-title"></h3>
+        <button type="button" class="shut" id="shut">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6" /></svg>
+        </button>
+      </div>
+      <div class="about-body">
+        <div class="about-summary">
+          <div class="about-art" id="about-art">
+            <span class="about-art-letter" id="about-art-letter" aria-hidden="true"></span>
+            <img id="about-art-img" alt="" hidden>
+          </div>
+          <div class="about-identity">
+            <p class="about-kicker" id="about-kicker"></p>
+            <h2 class="about-track-title" id="about-track-title" dir="auto"></h2>
+            <p class="about-track-credit" id="about-track-credit" dir="auto"></p>
+            <div class="about-facts" aria-label="Track timing">
+              <span id="about-start"></span>
+              <span id="about-duration"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="countdown">
+          <div class="countdown-track"><div class="countdown-left" id="countdown-left"></div></div>
+          <span class="countdown-time" id="countdown-time"></span>
+        </div>
+
+        <div class="about-details">
+          <p class="about-description" id="about-description" dir="auto" hidden></p>
+          <p class="about-link"><a id="track-link" target="_blank" rel="noopener" hidden></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="toast" id="toast" role="status" hidden></p>
+</div>
+
+<audio id="audio" preload="auto"></audio>
+<script type="module" src="js/player.js"></script>
+</body>
+</html>

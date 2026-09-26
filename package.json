@@ -1,0 +1,10 @@
+{
+  "name": "52hertz-lite",
+  "version": "1.0.0-rc.3",
+  "private": true,
+  "type": "module",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "test": "node --test js/editor/persist-utils.test.mjs js/url.test.mjs"
+  }
+}
