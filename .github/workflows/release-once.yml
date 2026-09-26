@@ -1,0 +1,36 @@
+name: Create verified release
+
+on:
+  push:
+    paths:
+      - ".release/READY"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build exact clean target
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout "453c10e669f0a02f8acc5768bcca1d6d9f3c7bc8"
+          python tools/build-release.py
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release create "v1.0.0-rc.3" \
+            "dist/52hertz-lite-1.0.0-rc.3.zip" \
+            "dist/52hertz-lite-1.0.0-rc.3.zip.sha256" \
+            --target "453c10e669f0a02f8acc5768bcca1d6d9f3c7bc8" \
+            --title "52Hertz Lite 1.0.0-rc.3" \
+            --notes "Static deterministic radio: no PHP, no database, no playout server." \
+            --prerelease
