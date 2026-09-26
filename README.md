@@ -9,6 +9,12 @@ station that is already playing.
 Full [52Hertz](https://github.com/pournasseh/52hertz) is the same idea with a PHP panel, schedules and
 programme days. Lite is for people who only have a phone and a free host.
 
+## About
+
+52Hertz Lite is the static-hosting form of the same deterministic radio model: `station.json` + hosted audio + a shared clock. It is designed for the smallest practical deployment surface — including free static hosting — with no PHP, database, or continuously running playout process.
+
+
+
 ## What you get
 
 | Path | Role |
